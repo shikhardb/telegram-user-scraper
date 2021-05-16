@@ -12,7 +12,10 @@ import random
 api_id = 4267539
 api_hash = '669af493060a6cedb98f20e3db101a35'
 phone = '+918009952194'
+# phone = '+916290069058'
 client = TelegramClient(None, api_id, api_hash)
+
+print('Welcome to the scraper')
 
 client.connect()
 if not client.is_user_authorized():
@@ -50,10 +53,13 @@ for chat in chats:
     try:
         if chat.megagroup== True:
             groups.append(chat)
+        if chat.megagroup== False:
+            groups.append(chat)
+        # groups.append(chat)
     except:
         continue
  
-print('Choose a group to add members:')
+print('Choose a group to add new members:')
 i=0
 for group in groups:
     print(str(i) + '- ' + group.title)
@@ -83,10 +89,11 @@ for user in users:
         else:
             sys.exit("Invalid Mode Selected. Please Try Again.")
         client(InviteToChannelRequest(target_group_entity,[user_to_add]))
-        print("Waiting for 5-10 Seconds...")
-        time.sleep(random.randrange(5, 10))
+        print("Waiting for 10-15 Seconds...")
+        time.sleep(random.randrange(10, 15))
     except PeerFloodError:
         print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
+        time.sleep(90)
     except UserPrivacyRestrictedError:
         print("The user's privacy settings do not allow you to do this. Skipping.")
     except:
