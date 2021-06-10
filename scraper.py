@@ -5,7 +5,7 @@ import csv
 
 api_id = 4267539
 api_hash = '669af493060a6cedb98f20e3db101a35'
-phone = '+916290069058'
+phone = '+918770778903'
 client = TelegramClient(phone, api_id, api_hash)
 
 client.connect()
@@ -53,18 +53,19 @@ with open("members.csv","w",encoding='UTF-8') as f:
     writer = csv.writer(f,delimiter=",",lineterminator="\n")
     writer.writerow(['username','user id', 'access hash','name','group', 'group id'])
     for user in all_participants:
-        if user.username:
-            username= user.username
-        else:
-            username= ""
-        if user.first_name:
-            first_name= user.first_name
-        else:
-            first_name= ""
-        if user.last_name:
-            last_name= user.last_name
-        else:
-            last_name= ""
-        name= (first_name + ' ' + last_name).strip()
-        writer.writerow([username,user.id,user.access_hash,name,target_group.title, target_group.id])      
+        if user.username : 
+            if user.username:
+                username= user.username
+            else:
+                username= ""
+            if user.first_name:
+                first_name= user.first_name
+            else:
+                first_name= ""
+            if user.last_name:
+                last_name= user.last_name
+            else:
+                last_name= ""
+            name= (first_name + ' ' + last_name).strip()
+            writer.writerow([username,user.id,user.access_hash,name,target_group.title, target_group.id])      
 print('Members scraped successfully.')

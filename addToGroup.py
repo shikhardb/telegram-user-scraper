@@ -13,7 +13,8 @@ api_id = 4267539
 api_hash = '669af493060a6cedb98f20e3db101a35'
 phone = '+918009952194'
 # phone = '+916290069058'
-client = TelegramClient(None, api_id, api_hash)
+# phone = '+918770778903'
+client = TelegramClient(phone, api_id, api_hash)
 
 print('Welcome to the scraper')
 
@@ -89,8 +90,8 @@ for user in users:
         else:
             sys.exit("Invalid Mode Selected. Please Try Again.")
         client(InviteToChannelRequest(target_group_entity,[user_to_add]))
-        print("Waiting for 10-15 Seconds...")
-        time.sleep(random.randrange(10, 15))
+        print("Waiting for 25-30 Seconds...")
+        time.sleep(random.randrange(25, 30))
     except PeerFloodError:
         print("Getting Flood Error from telegram. Script is stopping now. Please try again after some time.")
         time.sleep(90)
